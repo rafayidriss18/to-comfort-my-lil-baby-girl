@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanisha's Cozy Corner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdf6f0;
+            --accent-color: #d4a373;
+            --text-color: #6d597a;
+            --box-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--box-bg);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        /* The Vent Box */
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 15px;
+            font-family: inherit;
+            resize: none;
+            box-sizing: border-box;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* The Love List */
+        .love-list {
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .love-item {
+            background: rgba(212, 163, 115, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hi, Tanisha</h1>
+    <p class="subtitle">A little space for you to just be.</p>
+
+    <div class="card">
+        <h3>The Vent Box</h3>
+        <p style="font-size: 0.9rem;">Feeling overwhelmed? Tired? Just want to scream? Type it here. It goes straight to me, and I'm listening.</p>
+        
+        <form action="https://formspree.io/f/mkoqwkez" method="POST">
+            <textarea name="message" placeholder="Talk to me..."></textarea>
+            <button type="submit">Send to My Heart</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Things I need you to remember:</h3>
+        <div class="love-list">
+            <div class="love-item">✨ You are incredibly strong, even on the days you don't feel like it.</div>
+            <div class="love-item">✨ I love you more than words can describe.</div>
+            <div class="love-item">✨ Your comfort is my #1 priority right now.</div>
+            <div class="love-item">✨ This feeling is temporary, but my love for you isn't.</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>The "I Need" Menu</h3>
+        <p style="font-size: 0.85rem;">(Redeem these anytime by texting me)</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🍫 Chocolate</span>
+            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">💆‍♀️ Head Rub</span>
+            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🍕 Favorite Pizza</span>
+            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🤫 Silence & Cuddles</span>
+        </div>
+    </div>
+
+    <footer>
+        Made with all my love, specifically for you.
+    </footer>
+</div>
+
+</body>
+</html>
