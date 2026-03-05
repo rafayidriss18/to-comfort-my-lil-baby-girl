@@ -3,156 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanisha's Cozy Corner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <title>Tanisha's Sanctuary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg-color: #fdf6f0;
-            --accent-color: #d4a373;
-            --text-color: #6d597a;
-            --box-bg: #ffffff;
+            --glass: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text: #4a4e69;
+            --accent: #9a8c98;
         }
 
+        * { box-sizing: border-box; transition: all 0.4s ease; }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Quicksand', sans-serif;
             margin: 0;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 20px;
-            line-height: 1.6;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+            /* Animated Background */
+            background: linear-gradient(-45deg, #fce4ec, #f3e5f5, #e8f5e9, #fff3e0);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
+            width: 90%;
             max-width: 500px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
+            padding: 20px;
+            margin: 20px auto;
         }
 
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-        }
-
-        .subtitle {
-            font-style: italic;
-            margin-bottom: 40px;
-            opacity: 0.8;
-        }
-
-        .card {
-            background: var(--box-bg);
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
             padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            margin-bottom: 25px;
         }
 
-        /* The Vent Box */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; margin: 0; color: #9a8c98; }
+        
+        /* Reason Generator */
+        #reason-text { font-size: 1.1rem; min-height: 60px; display: flex; align-items: center; justify-content: center; font-weight: 500; margin-top: 15px; }
+        .heart-btn { background: #f08080; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; margin-top: 10px; font-weight: 700; }
+        .heart-btn:hover { transform: scale(1.05); background: #f4978e; }
+
+        /* Vent Box */
         textarea {
-            width: 100%;
-            height: 120px;
-            border: 2px solid #eee;
-            border-radius: 15px;
-            padding: 15px;
-            font-family: inherit;
-            resize: none;
-            box-sizing: border-box;
-            outline: none;
-            transition: border 0.3s;
+            width: 100%; height: 100px; border-radius: 15px; border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.3); padding: 15px; font-family: inherit; resize: none; margin-top: 10px; outline: none;
         }
+        .vent-btn { background: var(--text); color: white; border: none; padding: 10px 20px; border-radius: 15px; margin-top: 10px; cursor: pointer; }
+        #vent-status { font-size: 0.8rem; margin-top: 8px; color: #6b705c; display: none; }
 
-        textarea:focus {
-            border-color: var(--accent-color);
-        }
+        /* Icons Group */
+        .icon-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 15px; }
+        .icon-item { cursor: pointer; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; }
+        .icon-circle { background: white; padding: 10px; border-radius: 50%; margin-bottom: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        button {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 15px;
-            transition: transform 0.2s;
-        }
+        /* Checklist */
+        .check-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; margin-bottom: 8px; text-align: left; }
+        input[type="checkbox"] { accent-color: #f08080; width: 18px; height: 18px; }
 
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        /* The Love List */
-        .love-list {
-            text-align: left;
-            padding: 0 10px;
-        }
-
-        .love-item {
-            background: rgba(212, 163, 115, 0.1);
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; background: white; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 100; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 99; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Hi, Tanisha</h1>
-    <p class="subtitle">A little space for you to just be.</p>
+    <div class="glass-card">
+        <h1>Hi, Tanisha</h1>
+        <p>Your safe space for the next few days. ❤️</p>
+    </div>
 
-    <div class="card">
+    <div class="glass-card">
+        <div id="reason-text">Click the heart to see why I love you...</div>
+        <button class="heart-btn" onclick="newReason()">❤️ Show me</button>
+    </div>
+
+    <div class="glass-card">
         <h3>The Vent Box</h3>
-        <p style="font-size: 0.9rem;">Feeling overwhelmed? Tired? Just want to scream? Type it here. It goes straight to me, and I'm listening.</p>
-        
-        <form action="https://formspree.io/f/mkoqwkez" method="POST">
-            <textarea name="message" placeholder="Talk to me..."></textarea>
-            <button type="submit">Send to My Heart</button>
+        <p style="font-size: 0.85rem; opacity: 0.8;">Release it all here. I'm listening.</p>
+        <form id="vent-form">
+            <textarea name="message" id="vent-message" placeholder="Type how you feel..." required></textarea>
+            <button type="submit" class="vent-btn">Send to My Heart</button>
+            <div id="vent-status">Sent. I love you.</div>
         </form>
     </div>
 
-    <div class="card">
-        <h3>Things I need you to remember:</h3>
-        <div class="love-list">
-            <div class="love-item">✨ You are incredibly strong, even on the days you don't feel like it.</div>
-            <div class="love-item">✨ I love you more than words can describe.</div>
-            <div class="love-item">✨ Your comfort is my #1 priority right now.</div>
-            <div class="love-item">✨ This feeling is temporary, but my love for you isn't.</div>
+    <div class="glass-card">
+        <h3>One-Click Comfort</h3>
+        <div class="icon-grid">
+            <div class="icon-item" onclick="showCoupon('🍫 Chocolate', 'One emergency delivery of your favorite snacks is on its way!')">
+                <div class="icon-circle"><i data-lucide="cookie"></i></div>
+            </div>
+            <div class="icon-item" onclick="showCoupon('☁️ Cuddle', 'You are entitled to 1 hour of being my human pillow.')">
+                <div class="icon-circle"><i data-lucide="armchair"></i></div>
+            </div>
+            <div class="icon-item" onclick="showCoupon('🎬 Movie', 'You pick the movie, I bring the popcorn & cozy vibes.')">
+                <div class="icon-circle"><i data-lucide="tv"></i></div>
+            </div>
+            <div class="icon-item" onclick="showCoupon('🍵 Warmth', 'A hot tea or drink made exactly how you like it.')">
+                <div class="icon-circle"><i data-lucide="coffee"></i></div>
+            </div>
+            <div class="icon-item" onclick="showCoupon('💆‍♂️ Massage', 'A full-service stress-relief session (back or feet).')">
+                <div class="icon-circle"><i data-lucide="sparkles"></i></div>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <h3>The "I Need" Menu</h3>
-        <p style="font-size: 0.85rem;">(Redeem these anytime by texting me)</p>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🍫 Chocolate</span>
-            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">💆‍♀️ Head Rub</span>
-            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🍕 Favorite Pizza</span>
-            <span style="background: #eee; padding: 5px 15px; border-radius: 20px;">🤫 Silence & Cuddles</span>
-        </div>
+    <div class="glass-card">
+        <div class="check-item"><input type="checkbox"> <span>Sipped some water?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Heating pad/warmth ready?</span></div>
+        <div class="check-item"><input type="checkbox"> <span>Medicine/Pain relief taken?</span></div>
+        <div class="check-item"><input type="checkbox" checked disabled> <span>Extremely loved by me?</span></div>
     </div>
-
-    <footer>
-        Made with all my love, specifically for you.
-    </footer>
 </div>
 
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="modal">
+    <h2 id="coupon-title"></h2>
+    <p id="coupon-desc"></p>
+    <button class="heart-btn" onclick="closeModal()">Close</button>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    const reasons = [
+        "The way your eyes sparkle when you laugh.", "How you're so strong even when you feel weak.",
+        "Your kind to everyone around you.", "The way you make me feel safe.",
+        "Your incredible taste in everything.", "The way you say my name.",
+        "How hard you work for your dreams.", "The way you look when you're sleepy.",
+        "Your sense of humor that only I get.", "The way you handle my moods too.",
+        "How you're my best friend first.", "The way you scrunch your nose when you're annoyed.",
+        "How you support me in everything.", "Your passion for the things you love.",
+        "The way your hand fits perfectly in mine.", "Your resilience through tough days.",
+        "How you make even boring days feel like an adventure.", "The way you care about the little things.",
+        "Your beautiful soul.", "How you always know exactly what to say.",
+        "The way you smell like home.", "Your patience with me.",
+        "The way you challenge me to be a better person.", "How cute you are when you're hungry.",
+        "Your wisdom and the way you think.", "The way you light up any room you walk into.",
+        "How protective you are of the people you love.", "The way you look in my favorite shirt.",
+        "How you notice the small details I miss.", "Your bravery in being yourself.",
+        "The way you listen to me talk for hours.", "Your laugh—it’s my favorite sound.",
+        "How you're always there to pick me up.", "Your integrity and your heart.",
+        "The way you handle challenges with grace.", "How you make me want to grow old with you.",
+        "Your beautiful smile that fixes my bad days.", "The way you forgive me.",
+        "How you're so unapologetically Tanisha.", "The way you comfort me without saying a word.",
+        "Your intelligence and your wit.", "The way you prioritize us.",
+        "How you're the first person I want to tell everything to.", "Your soft heart.",
+        "The way you look at me.", "How you've changed my life for the better.",
+        "Your strength in moments like this.", "How you're my favorite person in the world.",
+        "The way you love me.", "Simply because you are YOU."
+    ];
+
+    function newReason() {
+        const random = Math.floor(Math.random() * reasons.length);
+        document.getElementById('reason-text').innerText = reasons[random];
+    }
+
+    function showCoupon(title, desc) {
+        document.getElementById('coupon-title').innerText = title;
+        document.getElementById('coupon-desc').innerText = desc;
+        document.getElementById('modal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    // FORM HANDLING (Stay on page)
+    const form = document.getElementById("vent-form");
+    form.addEventListener("submit", function(ev) {
+        ev.preventDefault();
+        const data = new FormData(form);
+        fetch("https://formspree.io/f/mkoqwkez", { // REPLACE THIS ID
+            method: "POST",
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById('vent-status').style.display = 'block';
+                form.reset();
+            }
+        });
+    });
+</script>
 </body>
 </html>
